@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            String[] line_split = line.split("\\s+"); 
+            pq1.offer(Integer.parseInt(line_split[0]));
+            pq2.offer(Integer.parseInt(line_split[1]));
+        }
+        sc.close();
+
+        int total = 0;
+        while (!pq1.isEmpty() && !pq2.isEmpty()) {
+            int distance = Math.abs(pq1.poll() - pq2.poll());
+            total += distance;
+        }
+        System.out.print(total);
+    }
+}
